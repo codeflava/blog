@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/Content/CustomStyle.css" type="text/css">
+	<title>Developer's blog</title>
+	
+	<script src="~/Scripts/modernizr-2.6.2.js"></script>
+	<script src="~/Scripts/jquery-2.1.1.js"></script>
+	<style type="text/css">.menu { }</style>
+</head>
+<body>
+	<div>
+		<div class="main-logo">
+			@Html.ActionLink("Developer's blog", "Index", "Home",new{@type="label", @class = "logo"}) <span class="displayed-date" id="dateContainer"></span>
+		</div>
+		<div class="container">
+			<ul class="menu">
+				<li>
+					@Html.ActionLink("About", "About", "Home")
+				</li>
+				<li>
+					@Html.ActionLink("New Post", "Index", "Admin")
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year</p>
+		</footer>
+	</div>
+	<script type="text/javascript">
+	$(function () {
+
+		var $dateContainer = $('#dateContainer'),
+			interval = setInterval(function () {
+
+				$dateContainer.html(new Date);
+
+			}, 1000);
+	});
+	</script>
+</body>
+</html>

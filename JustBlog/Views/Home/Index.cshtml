@@ -1,0 +1,21 @@
+﻿@using System.Drawing
+@using System.Globalization
+@using JustBlog.Models
+@model List<Post>
+		   @{
+			   var datestring = String.Format("dd MMMM yy, hh:mm");
+		   }
+<body>
+	<div id="wrapper">
+		<ul class="post list">
+			@foreach (var post in @Model)
+			{
+				<li class="post item">
+					<div class="post-title">@post.Title at <label class="post-date">@post.CreatedDate.ToString(datestring)</label></div>
+					<div class="post-content">@post.Content</div>
+					<div class="post-actions">@Html.ActionLink("edit","Edit","Admin", new{@type = "button"})</div>
+				</li>
+			}
+		</ul>
+	</div>
+</body>

@@ -1,0 +1,50 @@
+﻿
+@using JustBlog.Models
+@model JustBlog.Models.Post
+
+@{
+    ViewBag.Title = "AddPost";
+}
+
+<h2>New Post</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="edit-post-form">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="post-title-area">
+            @Html.LabelFor(model => model.Title)
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Title, new{height="20px"})
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="post-content-area">
+            @Html.LabelFor(model => model.Content)
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Content, new{cols = "40", rows="15"})
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input type="submit" value="Create" class="btn btn-default"  />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
